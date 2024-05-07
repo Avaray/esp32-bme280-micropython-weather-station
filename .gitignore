@@ -152,4 +152,4 @@ cython_debug/
 #.idea/
 
 # Private files
-config.json
+config.*
