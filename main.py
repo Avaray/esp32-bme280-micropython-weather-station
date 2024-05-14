@@ -1,11 +1,18 @@
 print('\nSTARTING MAIN\n')
 
 import esp
+import esp32
 import sys
 import machine
 
 import config
+import wifi
+import sensor
 import helpers
+
+data = {}
+
+data['deviceName'] = config.deviceName
 
 if machine.reset_cause() != machine.DEEPSLEEP_RESET:
   print('Device name:', config.deviceName.upper())
@@ -27,21 +34,22 @@ if machine.reset_cause() != machine.DEEPSLEEP_RESET:
     print('Setting CPU frequency to 80MHz')
     machine.freq(80000000)
 
-# connect to wifi (code is in wifi.py)
-# use try catch block to handle exceptions
-try:
-  import wifi
-except Exception as e:
-  print(f"An error occurred when importing wifi.py: {e}")
+# wifi.connect()
 
-# if wifi connection is successful, read data from BME280 sensor (code is in sensor.py)
-# use try catch block to handle exceptions
-try:
-  import readsensor
-except Exception as e:
-  print(f"An error occurred when importing sensor.py: {e}")
+# add sensor.read() to data
+data.update(sensor.read())
 
-# go to deep sleep for 10 seconds
-print('Going to deep sleep for 5 seconds...')
+print('Temperature:', data['temperature'], '°C')
+print('Pressure:', data['pressure'], 'hPa')
+print('Humidity:', data['humidity'], '%')
+
+# include ESP32 temperature
+data['esp32'] = helpers.normalizeNumber(helpers.fahrenheitToCelsius(esp32.raw_temperature()))
+
+print('Device temperature:', data['esp32'], '°C')
+
+# send data to server
+send(data)
+
+# print('Going to deep sleep for 5 seconds...')
 # machine.deepsleep(5000)
-
