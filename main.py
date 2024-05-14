@@ -34,7 +34,7 @@ if machine.reset_cause() != machine.DEEPSLEEP_RESET:
     print('Setting CPU frequency to 80MHz')
     machine.freq(80000000)
 
-# wifi.connect()
+wifi.connect()
 
 # add sensor.read() to data
 data.update(sensor.read())
