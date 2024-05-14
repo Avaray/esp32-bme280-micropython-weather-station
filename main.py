@@ -6,7 +6,7 @@ import sys
 import machine
 
 import config
-import wifi
+import network
 import sensor
 import helpers
 
@@ -34,22 +34,22 @@ if machine.reset_cause() != machine.DEEPSLEEP_RESET:
     print('Setting CPU frequency to 80MHz')
     machine.freq(80000000)
 
-wifi.connect()
+network.connect()
 
-# add sensor.read() to data
 data.update(sensor.read())
 
 print('Temperature:', data['temperature'], '°C')
 print('Pressure:', data['pressure'], 'hPa')
 print('Humidity:', data['humidity'], '%')
 
-# include ESP32 temperature
 data['esp32'] = helpers.normalizeNumber(helpers.fahrenheitToCelsius(esp32.raw_temperature()))
 
 print('Device temperature:', data['esp32'], '°C')
 
 # send data to server
-send(data)
+network.send(data)
 
-# print('Going to deep sleep for 5 seconds...')
-# machine.deepsleep(5000)
+# put the device to deep sleep for amount of minutes specified in config.py as frequency variable
+sleepTime = config.frequency * 60 * 1000
+print('Going to deep sleep for', config.frequency, 'minutes')
+machine.deepsleep(sleepTime)
