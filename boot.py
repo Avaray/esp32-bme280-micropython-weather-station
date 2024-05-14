@@ -1,32 +1,17 @@
-import sys
 import machine
+import time
 
-try:
-    import config
-except ImportError:
-    print('Error: config.py not found.')
-    sys.exit()
-
-try:
-    import helpers
-except ImportError:
-    print('Error: helpers.py not found.')
-    sys.exit()
-
-print('\nSTARTING\n')
-print('Device name:', config.deviceName.upper())
-print('Platform:', sys.platform.upper())
-print('Micropython Firmware Version', helpers.tupleToSemver(sys.implementation.version))
-print('Python version', helpers.tupleToSemver(sys.version_info))
-print('CPU frequency:', machine.freq(), 'Hz')
-
-if not config.knownNetworks:
-    print('No known networks found in config.py')
-    print('Please add at least one network to knownNetworks list')
-    sys.exit()
+if machine.reset_cause() == machine.DEEPSLEEP_RESET:
+    print('Woke from a deep sleep')
 else:
-    print('Known networks:', len(config.knownNetworks))
-
-# Set CPU frequency to 80MHz (default is 160MHz) to save power
-print('Setting CPU frequency to 80MHz')
-machine.freq(80000000)
+    print('\nBooting after a hard reset or power on')
+    print('Press Ctrl-C to interrupt boot and start a REPL session\n')
+    # wait 5 seconds for user to interrupt the boot process 
+    try:
+        for i in range(5, 0, -1):
+            print(i, end='...')
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print('\nInterrupted by keyboard (Ctrl-C)\n')
+    else:
+        print('0')
