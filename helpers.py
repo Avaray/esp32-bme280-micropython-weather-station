@@ -5,4 +5,5 @@ def fahrenheitToCelsius(fahrenheit):
     return (fahrenheit - 32) * 5.0/9.0
 
 def normalizeNumber(number):
-    return "{:.2f}".format(number)
+    number = float("{:.2f}".format(number))
+    return number
