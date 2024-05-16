@@ -1,6 +1,7 @@
 import network
 import time
-import urequests
+import urequests as req
+import ujson as json
 
 import config
 
@@ -27,5 +28,24 @@ def connect():
       print("Network config:", wlan.ifconfig())
 
 def send(data):
-  print('\nSENDING DATA TO SERVER\n')
-  print(data)
+  print('\nSENDING READINGS TO SERVER\n')
+  try:
+    headers = {'Content-Type': 'application/json'}
+    res = req.post(config.serverUrl, headers=headers, json=json.dumps(data))
+    res.close()
+    # check if the server responded with status code 200
+    if res.status_code == 200:
+      print('Successfully sent data to server')
+      return True
+    # check if the server responded with any status code
+    elif res.status_code and isinstance(res.status_code, int):
+      print('Received status code:', res.status_code)
+      return False
+    # if the server didn't respond with status code
+    else:
+      print('No status code received')
+      return False
+
+  except OSError as e:
+    print('OSError:', e)
+    return False
