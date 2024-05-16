@@ -47,18 +47,18 @@ try:
   print('Device temperature:', data['esp32'], '°C')
 
   # send data to server. try 10 times before giving up
-  for i in range(1, 11):
+  for i in range(1, 4):
     if wifi.send(data):
       break
     else:
-      print('Failed to send data to server. Retrying', i, 'of 10')
+      print('Failed to send data to server. Retrying', i, 'of 3')
       continue
   
 
   # put the device to deep sleep for amount of minutes specified in config.py as frequency variable
   print('Going to deep sleep for', config.frequency, 'minutes')
   sleepTime = config.frequency * 60 * 1000
-  # machine.deepsleep(sleepTime)
+  machine.deepsleep(sleepTime)
 
 except KeyboardInterrupt:
   print('KeyboardInterrupt detected. Exiting...')
