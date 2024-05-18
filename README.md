@@ -1,4 +1,4 @@
-# Weather Station for my Greenhouse
+# Weather Station for my Greenhouse (WIP)
 
 ![Image Description](/images/device.jpg)
 
@@ -19,8 +19,7 @@
 
 # Configuring device
 
-You need to create and upload `config.py` file to your device.  
-For the safety reasons it is not included in this repository.
+You need to modify `config.py` file to make it work.
 
 ```python
 # Name for your device (optional)
@@ -53,7 +52,8 @@ I have written server code in [Typescript](https://www.typescriptlang.org/) for 
 
 **In the first place**
 
-- Change the way how config.py is loaded
+- Change the way how `config.py` is loaded
+- Fix places in code where `config.deviceId` is used
 - Do better connection handling
 
 **Later**
