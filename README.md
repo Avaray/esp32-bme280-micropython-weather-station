@@ -1,4 +1,6 @@
-# Small project for my Greenhouse
+# Weather Station for my Greenhouse
+
+![Image Description](/images/device.jpg)
 
 # Hardware needed
 
@@ -8,11 +10,11 @@
 
 # How to run code from this repository
 
-1. Grab your ESP32 device.
+1. Grab your ESP32 development board.
 2. Connect BME280 sensor to proper Pins.
-3. Upload files from this repository to your device (with [Thonny](https://thonny.org/) or [MPY-Jama](https://github.com/jczic/ESP32-MPY-Jama/releases)).
-4. Configure device (read below).
-5. Reboot device.
+3. Upload all Python's `.py` files from this repository to your device (with [Thonny](https://thonny.org/) or [MPY-Jama](https://github.com/jczic/ESP32-MPY-Jama/releases)).
+4. Configure device ([read below](https://github.com/Avaray/esp32-bme280-micropython-weather-station?tab=readme-ov-file#configuring-device)).
+5. Reboot device and check terminal
 
 # Configuring device
 
@@ -42,13 +44,10 @@ BME280_SDA_PIN = 21
 frequency = 15
 ```
 
-# Server
+# The Server
 
-There are two options.
-
-1. You can run very simple server with BUN.js by running command... `command will be here`
-2. Full server is [available here](https://github.com/Avaray/weather-server-bun).
+Currently, I have written server code in [Typescript](https://www.typescriptlang.org/) for [Bun.js](https://bun.sh/). For the database, I'm using [MongoDB](https://www.mongodb.com/). I will make it available soon.
 
 # TODO's
 
-...
+- Do better keyboard interruptions. To have the ability to stop the program at any time.
