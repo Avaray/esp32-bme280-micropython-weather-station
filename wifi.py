@@ -39,9 +39,9 @@ def connect():
     print("Found", len(networks), "available networks")
 
     # check if any of the networks is available
-    for network in config.networks:
-      ssid = network["ssid"]
-      password = network["password"]
+    for knownNetwork in config.networks:
+      ssid = knownNetwork["ssid"]
+      password = knownNetwork["password"]
       if ssid in [network[0].decode() for network in networks]:
         print("Connecting to network", ssid)
         wlan.connect(ssid, password)
