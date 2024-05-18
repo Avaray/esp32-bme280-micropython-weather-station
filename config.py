@@ -10,6 +10,7 @@ networks = [
 # List of servers (URL's to upload sensor readings; names are optional)
 # You Need to specify protocol (http/https) in the URL
 # Without specified protocol the request might not be sent
+# You can specify multiple servers. The device will try to send readings to them in order
 servers = [
   {"name": "", "url": ""}
 ]
