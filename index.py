@@ -23,12 +23,12 @@ try:
     print('CPU frequency:', machine.freq(), 'Hz')
 
     # check if any networks are defined in config file
-    if not config.knownNetworks:
+    if not config.networks:
       print('No known networks found in config.py')
       print('Please add at least one network to networks list')
       sys.exit()
     else:
-      print('Known Wi-Fi networks:', len(config.knownNetworks))
+      print('Known Wi-Fi networks:', len(config.networks))
 
     # Set CPU frequency to 80MHz (default is 160MHz) to save power
     if machine.freq() != 80000000:
