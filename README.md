@@ -19,7 +19,7 @@
 
 # Configuring device
 
-You need to modify `config.py` file to make it work.
+You need to modify `config.py` file to make it work. Example:
 
 ```python
 # Name for your device (optional)
