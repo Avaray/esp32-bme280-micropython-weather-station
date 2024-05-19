@@ -46,7 +46,7 @@ frequency = 15
 
 # The Server
 
-I have written server code in [Typescript](https://www.typescriptlang.org/) for [Bun.js](https://bun.sh/). For the database, I'm using [MongoDB](https://www.mongodb.com/). The code is created for my needs. I need to modify it before sharing.
+I have written server code in [Typescript](https://www.typescriptlang.org/) for [Bun.js](https://bun.sh/). For the database, I'm using [MongoDB](https://www.mongodb.com/). The code is created for my needs and it's located in different repository. I need to modify it before sharing.
 
 # TODO's
 
