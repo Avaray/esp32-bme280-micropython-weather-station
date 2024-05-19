@@ -6,7 +6,7 @@
 
 - [ESP32](https://botland.store/1322-esp32-wifi-and-bt-modules) based development board.
 - [BME280](https://botland.store/pressure-sensors/11803-bme280-humidity-temperature-and-pressure-5904422366179.html) sensor.
-- Power supply, Powerbank (wuthout low current shutoff), or something else to power your device.
+- Power supply, Powerbank (without low current shutoff), or something else to power your device.
 - Cables to connect things together.
 
 # How to run code from this repository
