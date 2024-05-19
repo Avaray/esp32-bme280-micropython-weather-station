@@ -1,5 +1,6 @@
 print('\nBOOTING\n')
 
+# official micropython modules
 import machine
 import time
 
