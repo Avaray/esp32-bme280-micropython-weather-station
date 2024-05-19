@@ -11,35 +11,34 @@ import config
 def connect():
   print('\nSTARTING WIFI\n')
 
-  # check if the device is already connected to the network
+  # Check if the device is already connected to the network
   if network.WLAN(network.STA_IF).isconnected():
     print('Already connected to the network')
     return True
   else:
     print('Not connected to the network')
 
-    # create an instance of the WLAN class
+    # Create an instance of the WLAN class
     wlan = network.WLAN(network.STA_IF)
 
-    # check if the network hostname is already set to the device ID
-    if network.hostname() == config.deviceId:
+    # Check if the network hostname is already set to the device ID
+    if network.hostname() == config.DEVICE_ID:
       print('Proper network hostname already set', network.hostname())
     # if not, set it to the device ID
     else:
       print('Changing network hostname from', network.hostname(), 'to', config.deviceId)
-      # not sure which way is better, using both of ways (for now; first one should be deprecated, but somehow Is Not.)
-      # wlan.config(hostname=config.deviceId) # should be deprecated
-      network.hostname(config.deviceId) # should be used
+      # wlan.config(hostname=config.DEVICE_ID) # I think it's deprecated
+      network.hostname(config.DEVICE_ID)
 
-    # activate the Wi-Fi interface
+    # Activate the Wi-Fi interface
     wlan.active(True)
-    # scan for available networks
+    # Scan for available networks
     networks = wlan.scan()
-    # print the number of available networks
+    # Print the number of available networks
     print("Found", len(networks), "available networks")
 
-    # check if any of the networks is available
-    for knownNetwork in config.networks:
+    # Check if any of the networks is available
+    for knownNetwork in config.NETWORKS:
       ssid = knownNetwork["ssid"]
       password = knownNetwork["password"]
       if ssid in [network[0].decode() for network in networks]:

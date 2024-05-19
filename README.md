@@ -11,7 +11,7 @@
 
 # How to run code from this repository
 
-1. Grab your ESP32 development board.
+1. Install [Micropython](https://micropython.org/download/ESP32_GENERIC/) on your ESP32 development board.
 2. Connect BME280 sensor to proper Pins.
 3. Upload all Python's `.py` files from this repository to your device (using [Thonny](https://thonny.org/) or [MPY-Jama](https://github.com/jczic/ESP32-MPY-Jama/releases)).
 4. Configure device ([read below](https://github.com/Avaray/esp32-bme280-micropython-weather-station?tab=readme-ov-file#configuring-device)).
@@ -19,19 +19,16 @@
 
 # Configuring device
 
-You need to modify `config.py` file to make it work. Example:
+You need to change following settings in `config.py` file.
 
 ```python
-# Name for your device (optional)
-deviceId = ""
-
 # List of Wi-Fi networks
-networks = [
+NETWORKS = [
   {"ssid": "My-Awesome-Network-Name", "password": "neverGuess123"}
 ]
 
 # List of servers (URL's to upload sensor readings; names are optional)
-servers = [
+SERVERS = [
   {"name": "primary", "url": "https://my.website.com"},
   {"name": "local", "url": "http://192.168.0.20:4000"},
 ]
@@ -39,9 +36,6 @@ servers = [
 # SCL and SDA pins for BME280 sensor
 BME280_SCL_PIN = 22
 BME280_SDA_PIN = 21
-
-# How often check readings and send them to server (in minutes)
-frequency = 15
 ```
 
 # The Server
@@ -52,9 +46,7 @@ I have written server code in [Typescript](https://www.typescriptlang.org/) for 
 
 **In the first place**
 
-- Change the way how `config.py` is loaded
-- Fix places in code where `config.deviceId` is used
-- Do better connection handling
+- Do better Wi-Fi connection handling
 
 **Later**
 

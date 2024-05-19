@@ -1,8 +1,9 @@
+# Modules from the project
 import config
 
 # Convert tuple to semver string
-def tupleToSemver(version_tuple):
-  return '.'.join(map(str, version_tuple)).strip('.').strip(',')
+def tupleToSemver(tuple):
+  return '.'.join(map(str, tuple)).strip('.').strip(',')
 
 # Convert Fahrenheit to Celsius
 def fahrenheitToCelsius(fahrenheit):
@@ -41,3 +42,6 @@ def readLog(filename, logsDir=config.LOGS_DIR):
   except Exception as e:
     print('Failed to read log', str(e))
     return None
+
+# OTA update
+# todo...
