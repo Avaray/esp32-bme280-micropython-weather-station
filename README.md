@@ -62,3 +62,4 @@ I have written server code in [Typescript](https://www.typescriptlang.org/) for 
 - Better logging and add the option to disable logging to save energy (does it make sense?).
 - User Interface for Access Point mode. The user should have the ability to configure the device through a browser. This feature is to be implemented last as it is of low priority.
 - Check if BME280 library will work with BMP280
+- Add ability to download latest files after boot
