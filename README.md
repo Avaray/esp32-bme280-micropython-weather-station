@@ -59,5 +59,5 @@ I have written server code in [Typescript](https://www.typescriptlang.org/) for 
 **Later**
 
 - Do better keyboard interruptions. To have the ability to stop the program at any time. Currently, I have programmed it to work, but it can be done better. I need to think about it.
-- Add the option to disable logging to save energy (does it make sense?).
+- Better logging and add the option to disable logging to save energy (does it make sense?).
 - User Interface for Access Point mode. The user should have the ability to configure the device through a browser. This feature is to be implemented last as it is of low priority.
