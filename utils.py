@@ -1,3 +1,6 @@
+# Official Micropython modules
+import os
+
 # Modules from the project
 import config
 
@@ -14,9 +17,24 @@ def normalizeNumber(number):
   number = float("{:.2f}".format(number))
   return number
 
+# Get list of log files
+def getLogsList(logsDir=config.LOGS_DIR):
+  try:
+    logs = os.listdir(logsDir)
+    return logs
+  except Exception as e:
+    print('Failed to get logs list', str(e))
+    return None
+
+# Delete single log file
+def deleteLog(filename, logsDir=config.LOGS_DIR):
+  try:
+    os.remove(logsDir + filename)
+  except Exception as e:
+    print('Failed to delete log', str(e))
+
 # If the number of logs exceeds the limit, the oldest logs are deleted
 def deleteOldLogs(logsDir=config.LOGS_DIR, maxFiles=config.LOGS_MAX_FILES):
-  import os
   try:
     logs = os.listdir(logsDir)
     logs.sort(key=lambda x: os.stat(logsDir + x).st_mtime)
