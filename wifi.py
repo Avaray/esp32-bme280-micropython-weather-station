@@ -21,7 +21,8 @@ def connect():
     # Create an instance of the WLAN class
     wlan = network.WLAN(network.STA_IF)
 
-    if config.DEVICE_ID:        
+    # Check if the device ID is defined in the config file and is not empty string
+    if config.DEVICE_ID is not None and config.DEVICE_ID != '':
       # Check if the network hostname is already set to the device ID
       if network.hostname() == config.DEVICE_ID:
         print('Proper network hostname already set', network.hostname())
