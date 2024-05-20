@@ -1,4 +1,4 @@
-# Official micropython modules
+# Official Micropython modules
 from machine import SoftI2C, Pin
 
 # Modules from the project
