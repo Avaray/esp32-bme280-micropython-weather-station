@@ -12,8 +12,8 @@
 # How to run code from this repository
 
 1. Install [Micropython](https://micropython.org/download/ESP32_GENERIC/) on your ESP32 development board.
-2. Connect BME280 sensor to proper Pins.
-3. Modify configuration file ([read below](https://github.com/Avaray/esp32-bme280-micropython-weather-station?tab=readme-ov-file#configuring-device)).
+2. Connect BME280 or BMP280 sensor to proper Pins.
+3. Modify `config.py` configuration file.
 4. Upload all Python's `.py` files to your device (using [Thonny](https://thonny.org/) or [MPY-Jama](https://github.com/jczic/ESP32-MPY-Jama/releases)).
 5. Reboot device and check terminal. Device will print messages on every important step (when booting, connecting to network, reading sensor, sending data, going to deep sleep).
 
