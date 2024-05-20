@@ -49,5 +49,6 @@ ADMIN_MODE_PIN_OUT = 17
 ADMIN_MODE_PIN_IN = 16
 
 # Wi-Fi SSID and password for Admin Mode (optional)
+# Default SSID is "Weather Station" and password is not required
 ADMIN_MODE_WIFI_SSID = ""
 ADMIN_MODE_WIFI_PASSWORD = ""
