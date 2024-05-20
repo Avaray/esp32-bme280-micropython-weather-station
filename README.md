@@ -35,8 +35,8 @@ SERVERS = [
 ]
 
 # SCL and SDA pins for BME280 sensor
-BME280_SCL_PIN = 22
-BME280_SDA_PIN = 21
+SENSOR_SCL_PIN = 22
+SENSOR_SDA_PIN = 21
 ```
 
 # Admin Mode
