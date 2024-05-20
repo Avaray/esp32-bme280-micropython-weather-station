@@ -34,7 +34,7 @@ SERVERS = [
   {"name": "local", "url": "http://192.168.0.20:4000"},
 ]
 
-# SCL and SDA pins for BME280 sensor
+# SCL and SDA pins for the sensor
 SENSOR_SCL_PIN = 22
 SENSOR_SDA_PIN = 21
 ```
