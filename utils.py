@@ -26,6 +26,25 @@ def getLogsList(logsDir=config.LOGS_DIR):
     print('Failed to get logs list', str(e))
     return None
 
+# Get list of all .py files in the project
+def getProjectFilesList():
+  try:
+    files = {
+      'python': [],
+      'web': []
+    }
+    pythonFiles = os.listdir('/')
+    pythonFiles = [file for file in pythonFiles if file.endswith('.py')]
+    webFiles = []
+    if 'web' in os.listdir('/'):
+      webFiles = os.listdir('/web')
+    files['python'] = pythonFiles
+    files['web'] = webFiles
+    return files
+  except Exception as e:
+    print('Failed to get project files list', str(e))
+    return None
+
 # Delete single log file
 def deleteLog(filename, logsDir=config.LOGS_DIR):
   try:
@@ -45,7 +64,7 @@ def deleteOldLogs(logsDir=config.LOGS_DIR, maxFiles=config.LOGS_MAX_FILES):
     print('Failed to delete old logs', str(e))
 
 # Save logs to a file (overwrites the file if it exists)
-def saveLog(filename, logsDir=config.LOGS_DIR, data):
+def saveLog(filename, data, logsDir=config.LOGS_DIR):
   try:
     with open(logsDir + filename, 'w') as file:
       file.write(data)
