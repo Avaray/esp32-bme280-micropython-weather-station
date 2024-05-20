@@ -63,4 +63,4 @@ I have written server code in [Typescript](https://www.typescriptlang.org/) for 
 - Do better keyboard interruptions. To have the ability to stop the program at any time. Currently, I have programmed it to work, but it can be done better. I need to think about it.
 - Better logging and add the option to disable logging to save energy (does it make sense?).
 - Web UI
-- OTA updates
+- OTA updates, plus code backup
