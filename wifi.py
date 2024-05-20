@@ -21,14 +21,15 @@ def connect():
     # Create an instance of the WLAN class
     wlan = network.WLAN(network.STA_IF)
 
-    # Check if the network hostname is already set to the device ID
-    if network.hostname() == config.DEVICE_ID:
-      print('Proper network hostname already set', network.hostname())
-    # if not, set it to the device ID
-    else:
-      print('Changing network hostname from', network.hostname(), 'to', config.deviceId)
-      # wlan.config(hostname=config.DEVICE_ID) # I think it's deprecated
-      network.hostname(config.DEVICE_ID)
+    if config.DEVICE_ID:        
+      # Check if the network hostname is already set to the device ID
+      if network.hostname() == config.DEVICE_ID:
+        print('Proper network hostname already set', network.hostname())
+      # if not, set it to the device ID
+      else:
+        print('Changing network hostname from', network.hostname(), 'to', config.DEVICE_ID)
+        # wlan.config(hostname=config.DEVICE_ID) # I think it's deprecated
+        network.hostname(config.DEVICE_ID)
 
     # Activate the Wi-Fi interface
     wlan.active(True)
