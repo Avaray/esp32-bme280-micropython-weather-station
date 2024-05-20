@@ -67,7 +67,7 @@ Below you can see an example of the data sent by the device.
 If you use BMP280 sensor, the humidity value will be `0`.  
 That's because BMP280 sensor does not measure humidity.
 
-### Server code
+### My server code
 
 I have written my own server code in [Typescript](https://www.typescriptlang.org/) for [Bun.js](https://bun.sh/). The code is created for my needs and I need to modify it before making it public.
 Currently I spend my time on the device code, but I will publish the server code in the future.
