@@ -57,29 +57,3 @@ def connect():
     # let's print MAC address of the device (this must be removed in future, because it consumes power and is not needed)
     MAC = ':'.join(f'{b:02X}' for b in wlan.config('mac'))
     print('MAC address:', MAC)
-
-# Send data to the server
-def send(url, data):
-  print('\nSENDING READINGS TO SERVER\n')
-
-  print('Sending data to', url)
-  try:
-    headers = {'Content-Type': 'application/json'}
-    res = req.post(url, headers=headers, json=json.dumps(data))
-    res.close()
-    # check if the server responded with status code 200
-    if res.status_code == 200:
-      print('Successfully sent data to server')
-      return True
-    # check if the server responded with any status code
-    elif res.status_code and isinstance(res.status_code, int):
-      print('Received status code:', res.status_code)
-      return False
-    # if the server didn't respond with status code
-    else:
-      print('No status code received')
-      return False
-
-  except OSError as e:
-    print('OSError:', e)
-    return False

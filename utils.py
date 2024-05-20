@@ -2,6 +2,7 @@
 import os
 import hashlib
 import binascii
+import urequests as req
 
 # Modules from the project
 import config
@@ -82,9 +83,47 @@ def readLog(filename, logsDir=config.LOGS_DIR):
     print('Failed to read log', str(e))
     return None
 
+# Get file content MD5 hash
 def md5FileContentHash(file_path):
-    hash_md5 = hashlib.md5()
-    with open(file_path, "rb") as f:
-        for line in f:
-            hash_md5.update(line)
-    return binascii.hexlify(hash_md5.digest()).decode()
+  hash_md5 = hashlib.md5()
+  with open(file_path, "rb") as f:
+      for line in f:
+          hash_md5.update(line)
+  return binascii.hexlify(hash_md5.digest()).decode()
+
+# Download file from the server
+def downloadFile(url, file_path):
+  try:
+    response = req.get(url)
+    with open(file_path, 'wb') as file:
+      file.write(response.content)
+    return True
+  except Exception as e:
+    print('Failed to download file', str(e))
+    return False
+
+# Send data to the server
+def send(url, data):
+  print('\nSENDING READINGS TO SERVER\n')
+
+  print('Sending data to', url)
+  try:
+    headers = {'Content-Type': 'application/json'}
+    res = req.post(url, headers=headers, json=json.dumps(data))
+    res.close()
+    # check if the server responded with status code 200
+    if res.status_code == 200:
+      print('Successfully sent data to server')
+      return True
+    # check if the server responded with any status code
+    elif res.status_code and isinstance(res.status_code, int):
+      print('Received status code:', res.status_code)
+      return False
+    # if the server didn't respond with status code
+    else:
+      print('No status code received')
+      return False
+
+  except Exception as e:
+    print('Failed to send data to server', str(e))
+    return False

@@ -1,5 +1,3 @@
-print('\nSTARTING MAIN PROCESS\n')
-
 # Official micropython modules
 import esp
 import esp32
@@ -26,9 +24,9 @@ try:
   if machine.reset_cause() != machine.DEEPSLEEP_RESET:
 
     if config.DEVICE_ID:
-      print('Device name:', config.DEVICE_ID.upper())
+      print('Device ID:', config.DEVICE_ID.upper())
     else:
-      print('Device name is not specified')
+      print('Device ID is not specified')
 
     print('Platform:', sys.platform.upper())
     print('Flash size:', esp.flash_size() // 1024 // 1024, 'MB')
