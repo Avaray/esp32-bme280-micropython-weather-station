@@ -45,7 +45,8 @@ SENSOR_SDA_PIN = 21
 
 To start device in **Admin Mode** you must have **GPIO 16** and **GPIO 17** pins connected (shorted with [Jumper](<https://en.wikipedia.org/wiki/Jumper_(computing)>) for example). Without this connection device will boot in **Normal Mode**.
 
-However, you can change the `ADMIN_MODE_REVERSED` variable in configuration file to `True`. After making this change, you will need to connect the mentioned pins to boot in **Normal Mode**.
+However, you can change the `ADMIN_MODE_REVERSED` variable in configuration file to `True`. After making this change, you will need to connect the mentioned pins to boot in **Normal Mode**. Booting without connected pins will start the device in **Admin Mode**.
+
 You can also specify in the configuration file which pins should be used for **Admin Mode**.
 
 # The Server
@@ -63,7 +64,8 @@ Below you can see an example of the data sent by the device.
 }
 ```
 
-If you use BMP280 sensor, the humidity value will be `0`.
+If you use BMP280 sensor, the humidity value will be `0`.  
+That's because BMP280 sensor does not measure humidity.
 
 ### Server code
 
