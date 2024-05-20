@@ -19,7 +19,8 @@
 
 # Configuring device
 
-You need to change following settings in `config.py` file.
+You need to change following settings in `config.py` file.  
+Below you see only the most important settings. You will find more inside the file.
 
 ```python
 # List of Wi-Fi networks
