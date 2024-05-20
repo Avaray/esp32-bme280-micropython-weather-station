@@ -65,7 +65,7 @@ try:
   for server in config.SERVERS:
     url = server['url']
     try:
-      wifi.send(url, data)
+      utils.send(url, data)
       print('Data sent successfully')
       break
     except Exception as e:
