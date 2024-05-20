@@ -5,9 +5,10 @@
 # Hardware needed
 
 - [ESP32](https://botland.store/1322-esp32-wifi-and-bt-modules) based development board.
-- [BME280](https://botland.store/pressure-sensors/11803-bme280-humidity-temperature-and-pressure-5904422366179.html) sensor.
+- [BME280](https://botland.store/pressure-sensors/11803-bme280-humidity-temperature-and-pressure-5904422366179.html) or [BMP280](https://botland.store/pressure-sensors/7245-bmp280-digital-barometer-pressure-sensor-110kpa-i2cspi-33v-5904422310042.html) sensor.
 - Power supply, Powerbank (without low current shutoff), or something else to power your device.
 - Cables to connect things together.
+- **(optional)** Jumper/Switch/Button.
 
 # How to run code from this repository
 
@@ -38,6 +39,15 @@ BME280_SCL_PIN = 22
 BME280_SDA_PIN = 21
 ```
 
+# Admin Mode
+
+**Admin Mode** creates an open network on the device. After connecting to the network, you can manage the device in a graphical interface. **Admin Mode** is mainly used to configure and debug the device.
+
+By default, you must have **GPIO 16** and **GPIO 17** connected (shorted with [Jumper](<https://en.wikipedia.org/wiki/Jumper_(computing)>) for example) to start device in **Normal Mode**. Without this connection device will boot in **Admin Mode**. However, you can change the `ADMIN_MODE_REVERSED` variable in configuration file to `True`. After making this change, you will need to connect the mentioned pins to boot in **Admin Mode**.
+You can also specify in the configuration file which pins should be used for **Admin Mode**.
+
+_I'm thinking about completely reversing this method. This will most likely be changed soon._
+
 # The Server
 
 I have written server code in [Typescript](https://www.typescriptlang.org/) for [Bun.js](https://bun.sh/). For the database, I'm using [MongoDB](https://www.mongodb.com/). The code is created for my needs and it's located in different repository. I need to modify it before sharing.
@@ -52,6 +62,5 @@ I have written server code in [Typescript](https://www.typescriptlang.org/) for 
 
 - Do better keyboard interruptions. To have the ability to stop the program at any time. Currently, I have programmed it to work, but it can be done better. I need to think about it.
 - Better logging and add the option to disable logging to save energy (does it make sense?).
-- User Interface for Access Point mode. The user should have the ability to configure the device through a browser. This feature is to be implemented last as it is of low priority.
-- Check if BME280 library will work with BMP280
-- Add ability to download latest files after boot
+- Web UI
+- OTA updates
