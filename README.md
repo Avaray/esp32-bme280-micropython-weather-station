@@ -84,3 +84,4 @@ Currently I spend my time on the device code, but I will publish the server code
 - Better logging and add the option to disable logging to save energy (does it make sense?).
 - Web UI
 - OTA updates, plus code backup
+- Custom `machine.wake_reason()` for reboots to Admin Mode. If config is not correct, the device will reboot to Admin Mode.
