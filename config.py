@@ -21,7 +21,7 @@ SENSOR_SCL_PIN = 22
 SENSOR_SDA_PIN = 21
 
 # How often check readings and send them to server (in minutes)
-# In other words, how often the device will wake up (from deep sleep) and send readings
+# In other words, for how long to put the device to deep sleep
 FREQUENCY = 15
 
 # Enable or disable logs
