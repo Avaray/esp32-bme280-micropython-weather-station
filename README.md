@@ -50,9 +50,9 @@ You can also specify in the configuration file which pins should be used for **A
 
 # The Server
 
-You can create your own server to receive data from the device. The server must be able to receive POST requests with JSON data. You can use any backend technology you want.
+You can create your own server to receive data from the device. The server must be able to receive [POST requests](<https://en.wikipedia.org/wiki/POST_(HTTP)>) with [JSON](https://en.wikipedia.org/wiki/JSON) data. You can use any backend technology you want. If you will use Python for serverm, you can easily convert JSON data to a dictionary using `json.loads()` function.
 
-Device sends JSON data to specified in configuration file URL's.  
+Device sends JSON data to specified in configuration file [URL's](https://en.wikipedia.org/wiki/URL).  
 Below you can see an example of the data sent by the device.
 
 ```json
@@ -62,6 +62,10 @@ Below you can see an example of the data sent by the device.
   "pressure": 1013.25
 }
 ```
+
+If you use BMP280 sensor, the humidity value will be `0`.
+
+### Server code
 
 I have written my own server code in [Typescript](https://www.typescriptlang.org/) for [Bun.js](https://bun.sh/). The code is created for my needs and I need to modify it before making it public.
 Currently I spend my time on the device code, but I will publish the server code in the future.
