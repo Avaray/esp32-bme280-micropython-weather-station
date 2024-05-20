@@ -16,7 +16,7 @@ SERVERS = [
   {"name": "", "url": ""}
 ]
 
-# SCL and SDA pins for sensor
+# SCL and SDA pins for the sensor
 SENSOR_SCL_PIN = 22
 SENSOR_SDA_PIN = 21
 
