@@ -50,7 +50,21 @@ You can also specify in the configuration file which pins should be used for **A
 
 # The Server
 
-I have written server code in [Typescript](https://www.typescriptlang.org/) for [Bun.js](https://bun.sh/). The code is created for my needs and it's located in different repository. I need to modify it before making it public.
+You can create your own server to receive data from the device. The server must be able to receive POST requests with JSON data. You can use any backend technology you want.
+
+Device sends JSON data to specified in configuration file URL's.  
+Below you can see an example of the data sent by the device.
+
+```json
+{
+  "temperature": 21.5,
+  "humidity": 50.0,
+  "pressure": 1013.25
+}
+```
+
+I have written my own server code in [Typescript](https://www.typescriptlang.org/) for [Bun.js](https://bun.sh/). The code is created for my needs and I need to modify it before making it public.
+Currently I spend my time on the device code, but I will publish the server code in the future.
 
 # TODO's
 
