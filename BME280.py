@@ -1,5 +1,5 @@
 """
-BME280 I2C Micropython Library for ESP32 based development boards
+BME280 & BMP280 I2C Micropython Library for ESP32 based development boards
 
 Originally created by Foxdan
 https://github.com/foxdan/ubme280
@@ -11,6 +11,10 @@ Modified by Avaray, including tiny cosmetic changes:
 
 Tested on:
 - ESP-WROOM-32 DevkitC 38-Pin (Micropython Firmware version 1.22.2)
+
+Tested with:
+- BME280
+- BMP280
 
 Example code:
 
