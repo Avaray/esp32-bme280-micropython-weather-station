@@ -7,7 +7,7 @@ import utils
 import BME280
 
 # Initialize I2C bus
-i2c = SoftI2C(scl=Pin(config.BME280_SCL_PIN), sda=Pin(config.BME280_SDA_PIN))
+i2c = SoftI2C(scl=Pin(config.SENSOR_SCL_PIN), sda=Pin(config.SENSOR_SDA_PIN))
 
 # Initialize BME280 sensor
 sensor = BME280.BME280(i2c)
