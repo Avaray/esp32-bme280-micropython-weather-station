@@ -1,5 +1,7 @@
 # Official Micropython modules
 import os
+import hashlib
+import binascii
 
 # Modules from the project
 import config
@@ -80,5 +82,9 @@ def readLog(filename, logsDir=config.LOGS_DIR):
     print('Failed to read log', str(e))
     return None
 
-# OTA update
-# todo...
+def md5FileContentHash(file_path):
+    hash_md5 = hashlib.md5()
+    with open(file_path, "rb") as f:
+        for line in f:
+            hash_md5.update(line)
+    return binascii.hexlify(hash_md5.digest()).decode()
