@@ -51,7 +51,7 @@ You can also specify in the configuration file which pins should be used for **A
 
 # The Server
 
-You can create your own server to receive data from the device. The server must be able to receive [POST requests](<https://en.wikipedia.org/wiki/POST_(HTTP)>) with [JSON](https://en.wikipedia.org/wiki/JSON) data. You can use any backend technology you want. If you will use Python for serverm, you can easily convert JSON data to a dictionary using `json.loads()` function.
+You can create your own server to receive data from the device. The server must be able to receive [POST requests](<https://en.wikipedia.org/wiki/POST_(HTTP)>) with [JSON](https://en.wikipedia.org/wiki/JSON) data. You can use any backend technology you want. If you will use Python for server, you can easily convert JSON data to a dictionary using `json.loads()` function.
 
 Device sends JSON data to specified in configuration file [URL's](https://en.wikipedia.org/wiki/URL).  
 Below you can see an example of the data sent by the device.
