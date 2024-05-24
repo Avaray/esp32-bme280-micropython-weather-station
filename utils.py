@@ -1,5 +1,6 @@
 # Official Micropython modules
 import os
+import utime
 import hashlib
 import binascii
 import urequests as req
