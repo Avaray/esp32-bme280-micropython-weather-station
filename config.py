@@ -16,6 +16,10 @@ SERVERS = [
   {"name": "", "url": ""}
 ]
 
+# Upload sensor readings to all servers from the list
+# If set to False, the device will upload readings only to the first available server from the list
+SERVERS_UPLOAD_TO_ALL = False
+
 # SCL and SDA pins for the sensor
 SENSOR_SCL_PIN = 22
 SENSOR_SDA_PIN = 21
