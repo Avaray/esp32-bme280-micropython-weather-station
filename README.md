@@ -85,10 +85,6 @@ const server = Bun.serve({
 console.log(`Listening on ${server.url}`);
 ```
 
-### My server code
-
-I'm using similar server code with [Bun.js](https://bun.sh/). The code is created for my needs. I'm using [MongoDB](https://www.mongodb.com/) to store readings. Currently I spend my time on the device code, but I will modify and publish the server code in the future.
-
 # TODO's
 
 **In the first place**
