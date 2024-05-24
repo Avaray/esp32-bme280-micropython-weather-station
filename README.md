@@ -19,7 +19,7 @@
 
 # Configuring device
 
-You need to change following settings in `config.py` file.  
+You can configure your device by editing the `config.py` file.  
 Below you see only the most important settings. You will find more inside the file.
 
 ```python
