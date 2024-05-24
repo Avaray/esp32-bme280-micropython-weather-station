@@ -1,6 +1,10 @@
 # Name for your device (optional)
 DEVICE_ID = ""
 
+# SCL and SDA pins for the sensor
+SENSOR_SCL_PIN = 22
+SENSOR_SDA_PIN = 21
+
 # List of known Wi-Fi networks
 # You can specify multiple networks. The device will try to connect to them in order
 # It will not connect to networks that are not on this list
@@ -19,10 +23,6 @@ SERVERS = [
 # Upload sensor readings to all servers from the list
 # If set to False, the device will upload readings only to the first available server from the list
 SERVERS_UPLOAD_TO_ALL = False
-
-# SCL and SDA pins for the sensor
-SENSOR_SCL_PIN = 22
-SENSOR_SDA_PIN = 21
 
 # How often check readings and send them to server (in minutes)
 # In other words, for how long to put the device to deep sleep
