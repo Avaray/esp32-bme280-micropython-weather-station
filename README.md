@@ -11,7 +11,7 @@
 
 # How to run code from this repository
 
-1. Install [Micropython](https://micropython.org/download/ESP32_GENERIC/) on your ESP32 development board.
+1. Install [Micropython](https://micropython.org/download/ESP32_GENERIC/) (1.13+) on your ESP32 development board.
 2. Connect BME280 or BMP280 sensor to proper Pins.
 3. Modify `config.py` configuration file.
 4. Upload all Python's `.py` files to your device (using [Thonny](https://thonny.org/) or [MPY-Jama](https://github.com/jczic/ESP32-MPY-Jama/releases)).
@@ -39,7 +39,7 @@ SENSOR_SCL_PIN = 22
 SENSOR_SDA_PIN = 21
 ```
 
-# Admin Mode
+# Admin Mode (UI not included yet)
 
 **Admin Mode** creates an open network on the device. After connecting to the network, you can manage the device in a graphical interface. **Admin Mode** is mainly used to configure and debug the device.
 
@@ -98,3 +98,4 @@ console.log(`Listening on ${server.url}`);
 - Admin Mode + Web UI
 - OTA updates, Pre-commit hook to generate hashes for all files, plus code backup (to prevent bricking the device)
 - Custom `machine.wake_reason()` for reboots to Admin Mode. If config is not correct, the device will reboot to Admin Mode.
+- In Admin Mode, force connected client to open a browser with the device's IP address.
