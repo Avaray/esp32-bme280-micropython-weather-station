@@ -7,8 +7,8 @@ import machine
 # Modules from the project
 import config
 import utils
-import wifi
 import sensor
+from wifi import connect
 
 # Everything is enclosed in try-catch block to catch KeyboardInterrupt
 # I'm still looking for a better way to interrupt code execution to be able to edit files in IDE
@@ -48,7 +48,7 @@ try:
       machine.freq(80000000)
 
   # Connect to the Wi-Fi network
-  wifi.connect()
+  connect()
 
   # Add sensor readings to the data dictionary
   data.update(sensor.read())
