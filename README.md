@@ -39,7 +39,10 @@ SENSOR_SCL_PIN = 22
 SENSOR_SDA_PIN = 21
 ```
 
-# Admin Mode (UI not included yet)
+# Admin Mode (Work in Progress)
+
+`UI not included yet`
+`Code not fully implemented yet`
 
 **Admin Mode** creates an open network on the device. After connecting to the network, you can manage the device in a graphical interface. **Admin Mode** is mainly used to configure and debug the device.
 
