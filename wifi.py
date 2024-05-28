@@ -3,6 +3,7 @@ import network
 import time
 import urequests as req
 import ujson as json
+import uasyncio as asyncio
 
 # modules from the project
 import config
@@ -58,3 +59,16 @@ def connect():
     # let's print MAC address of the device (this must be removed in future, because it consumes power and is not needed)
     MAC = ':'.join(f'{b:02X}' for b in wlan.config('mac'))
     print('MAC address:', MAC)
+
+# Start the Access Point
+def create():
+  ap = network.WLAN(network.AP_IF)
+  ap.active(True)
+
+  # Set the AP configuration
+  ssid = config.AP_SSID if isinstance(config.ADMIN_MODE_WIFI_SSID, str) and config.ADMIN_MODE_WIFI_SSID else 'Weather Station'
+  password = str(config.ADMIN_MODE_WIFI_PASSWORD) if isinstance(config.ADMIN_MODE_WIFI_PASSWORD, str) and config.ADMIN_MODE_WIFI_PASSWORD else ''
+  authmode = network.AUTH_WPA_WPA2_PSK if password else network.AUTH_OPEN
+  ap.config(ssid=ssid, authmode=authmode, password=password)
+
+  print('AP started:', ap.ifconfig())
