@@ -18,9 +18,11 @@ def isValid(value):
 def read():
   print('\nREADING DATA FROM SENSOR\n')
   sensor.read()
-  data = {
-    "temperature": utils.normalizeNumber(sensor.temperature) if isValid(sensor.temperature) else 0,
-    "pressure": utils.normalizeNumber(sensor.pressure) if isValid(sensor.pressure) else 0,
-    "humidity": utils.normalizeNumber(sensor.humidity) if isValid(sensor.humidity) else 0
-  }
+  data = {}
+  if isValid(sensor.temperature):
+    data['temperature'] = utils.normalizeNumber(sensor.temperature)
+  if isValid(sensor.pressure):
+    data['pressure'] = utils.normalizeNumber(sensor.pressure)
+  if isValid(sensor.humidity):
+    data['humidity'] = utils.normalizeNumber(sensor.humidity)
   return data
