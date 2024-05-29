@@ -108,4 +108,4 @@ console.log(`Listening on ${server.url}`);
 
 # Notes
 
-[Camelcase](https://developer.mozilla.org/en-US/docs/Glossary/Camel_case) is used in the code because I came from the JavaScript world. I know that in Python, the convention is to use [snake_case](https://developer.mozilla.org/en-US/docs/Glossary/Snake_case). I'm working on it.
+[Camelcase](https://developer.mozilla.org/en-US/docs/Glossary/Camel_case) is used in the code because I came from the JavaScript world. I know that in Python, the convention is to use [snake_case](https://developer.mozilla.org/en-US/docs/Glossary/Snake_case). Formatting in Python is also crazy for me, but I'm working on both of these things.
