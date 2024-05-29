@@ -53,9 +53,12 @@ try:
   # Add sensor readings to the data dictionary
   data.update(sensor.read())
 
-  print('Temperature:', data['temperature'], '°C')
-  print('Pressure:', data['pressure'], 'hPa')
-  print('Humidity:', data['humidity'], '%')
+  if data['temperature']:
+    print('Temperature:', data['temperature'], '°C')
+  if data['pressure']:
+    print('Pressure:', data['pressure'], 'hPa')
+  if data['humidity']:
+    print('Humidity:', data['humidity'], '%')
 
   if config.SENSOR_INCLUDE_ESP32_TEMPERATURE:
     data['esp32'] = utils.normalizeNumber(utils.fahrenheitToCelsius(esp32.raw_temperature()))
