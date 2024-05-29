@@ -105,3 +105,7 @@ console.log(`Listening on ${server.url}`);
 - Better logging and add the option to disable logging to save energy (does it make sense?).
 - OTA updates, Pre-commit hook to generate hashes for all files, plus code backup (to prevent bricking the device)
 - Custom `machine.wake_reason()` for reboots to Admin Mode. If config is not correct, the device will reboot to Admin Mode.
+
+# Notes
+
+[Camelcase](https://developer.mozilla.org/en-US/docs/Glossary/Camel_case) is used in the code because I came from the JavaScript world. I know that in Python, the convention is to use [snake_case](https://developer.mozilla.org/en-US/docs/Glossary/Snake_case). I'm working on it.
