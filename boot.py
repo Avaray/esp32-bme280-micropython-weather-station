@@ -8,8 +8,6 @@ import time
 import config
 from utils import ableToBoot
 
-admin_mode = False
-
 if not ableToBoot():
   raise Exception('\nUnable to boot device due to configuration errors\n'.upper())
   admin_mode = True
