@@ -57,7 +57,8 @@ try:
   print('Pressure:', data['pressure'], 'hPa')
   print('Humidity:', data['humidity'], '%')
 
-  data['esp32'] = utils.normalizeNumber(utils.fahrenheitToCelsius(esp32.raw_temperature()))
+  if config.SENSOR_INCLUDE_ESP32_TEMPERATURE:
+    data['esp32'] = utils.normalizeNumber(utils.fahrenheitToCelsius(esp32.raw_temperature()))
 
   print('Device temperature:', data['esp32'], '°C')
 

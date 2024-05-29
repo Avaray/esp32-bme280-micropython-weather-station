@@ -5,6 +5,10 @@ DEVICE_ID = ""
 SENSOR_SCL_PIN = 22
 SENSOR_SDA_PIN = 21
 
+# Include ESP32 raw temperature in the data sent to the server
+# https://docs.micropython.org/en/latest/library/esp32.html#esp32.raw_temperature
+SENSOR_INCLUDE_ESP32_TEMPERATURE = False
+
 # List of known Wi-Fi networks
 # You can specify multiple networks. The device will try to connect to them in order
 # It will not connect to networks that are not on this list
