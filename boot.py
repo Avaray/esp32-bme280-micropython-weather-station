@@ -1,9 +1,18 @@
 # Official MicroPython modules
+import utils
+import sys
 import machine
 import time
 
 # Project files
 import config
+from utils import ableToBoot
+
+admin_mode = False
+
+if not ableToBoot():
+  raise Exception('\nUnable to boot device due to configuration errors\n'.upper())
+  admin_mode = True
 
 output_pin = machine.Pin(config.ADMIN_MODE_PIN_OUT, machine.Pin.OUT)
 input_pin = machine.Pin(config.ADMIN_MODE_PIN_IN, machine.Pin.IN)
