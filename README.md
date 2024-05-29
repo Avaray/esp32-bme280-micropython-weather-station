@@ -67,8 +67,8 @@ Below you can see an example of the data sent by the device.
 }
 ```
 
-If you use BMP280 sensor, the humidity value will be `0`.  
-That's because BMP280 sensor does not measure humidity.
+The sensor will send only the data that is available.
+If the sensor does not have the ability to measure something, it will not be included in the JSON data.
 
 ## Example of server code ([BUN.js](https://bun.sh/))
 
