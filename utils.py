@@ -4,6 +4,7 @@ import utime
 import hashlib
 import binascii
 import urequests as req
+import ujson as json
 
 # Modules from the project
 import config
@@ -11,6 +12,24 @@ import config
 # Convert tuple to semver string
 def tupleToSemver(tuple):
   return '.'.join(map(str, tuple)).strip('.').strip(',')
+
+# Check if Micropython version is 1.22 or higher
+def isMicropythonVersionSufficient(current, required='1.22.0'):
+
+  print('Checking Micropython version')
+
+  import re
+  if not re.match(r'^\d+\.\d+(\.\d+)?$', current):
+    print('Provided version is not in semver format, expected format is x.y.z')
+    return False
+
+  current = tuple(map(int, current.split('.')))
+  required = tuple(map(int, required.split('.')))
+  if current >= required:
+    return True
+  else:
+    print('Micropython version', tupleToSemver(current), 'is not sufficient, required version is', tupleToSemver(required))
+    return False
 
 # Convert Fahrenheit to Celsius
 def fahrenheitToCelsius(fahrenheit):
