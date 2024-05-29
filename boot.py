@@ -16,9 +16,7 @@ output_pin = machine.Pin(config.ADMIN_MODE_PIN_OUT, machine.Pin.OUT)
 input_pin = machine.Pin(config.ADMIN_MODE_PIN_IN, machine.Pin.IN)
 
 output_pin.value(1)
-
 admin_mode = (input_pin.value() == 0 and not config.ADMIN_MODE_REVERSED) or (input_pin.value() == 1 and config.ADMIN_MODE_REVERSED)
-
 output_pin.value(0)
 
 if admin_mode:
