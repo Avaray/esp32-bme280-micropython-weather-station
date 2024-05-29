@@ -90,6 +90,11 @@ console.log(`Listening on ${server.url}`);
 
 # TODO's
 
+**Currently working on**
+
+- In Admin Mode, force connected client to open a browser with the device's IP address (Captive Portal).
+- Admin Mode + Web UI
+
 **In the first place**
 
 - Do better Wi-Fi connection handling
@@ -98,7 +103,5 @@ console.log(`Listening on ${server.url}`);
 
 - Do better keyboard interruptions. To have the ability to stop the program execution at any time (except when sleeping, ofc.). Currently, I have programmed it to work, but it can be done better. I need to think about it.
 - Better logging and add the option to disable logging to save energy (does it make sense?).
-- Admin Mode + Web UI
 - OTA updates, Pre-commit hook to generate hashes for all files, plus code backup (to prevent bricking the device)
 - Custom `machine.wake_reason()` for reboots to Admin Mode. If config is not correct, the device will reboot to Admin Mode.
-- In Admin Mode, force connected client to open a browser with the device's IP address.
