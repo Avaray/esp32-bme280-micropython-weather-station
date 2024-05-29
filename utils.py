@@ -1,5 +1,6 @@
 # Official Micropython modules
 import os
+import sys
 import utime
 import hashlib
 import binascii
@@ -147,3 +148,32 @@ def send(url, data):
   except Exception as e:
     print('Failed to send data to server', str(e))
     return False
+
+# Validate required things before booting
+def ableToBoot(able=True):
+
+  if not config.NETWORKS:
+    print('No networks defined in config file')
+    able = False
+
+  for network in config.NETWORKS:
+    if not network['ssid']:
+      print('Network SSID cannot be empty')
+      able = False
+
+  if not config.SERVERS:
+    print('No servers defined in config file')
+    able = False
+    
+  for server in config.SERVERS:
+    if not server['url']:
+      print('Server URL cannot be empty')
+      able = False
+
+  # Check if Micropython version is sufficient
+  micropython_version = tupleToSemver(sys.implementation.version)
+  if not isMicropythonVersionSufficient(micropython_version):
+    print('Micropython version', micropython_version, 'is not sufficient, required version is 1.22.0 or higher')
+    able = False
+
+  return able
