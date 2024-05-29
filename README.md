@@ -67,8 +67,7 @@ Below you can see an example of the data sent by the device.
 }
 ```
 
-The sensor will send only the data that is available.
-If the sensor does not have the ability to measure something, it will not be included in the JSON data.
+The device will send only the readings that are available. If the device does not have the ability to measure something, it will not be included in the JSON data.
 
 ## Example of server code ([BUN.js](https://bun.sh/))
 
