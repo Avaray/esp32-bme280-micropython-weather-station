@@ -1,7 +1,7 @@
 # Official Micropython modules
 from machine import SoftI2C, Pin
 
-# Modules from the project
+# Project files
 from config import SENSOR_SCL_PIN, SENSOR_SDA_PIN
 from utils import normalize_number
 import BME280
