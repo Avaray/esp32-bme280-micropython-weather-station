@@ -37,14 +37,14 @@ def fahrenheitToCelsius(fahrenheit):
   return (fahrenheit - 32) * 5.0/9.0
 
 # Normalize number to two decimal places
-def normalizeNumber(number):
+def normalize_number(number):
   number = float("{:.2f}".format(number))
   return number
 
 # Get list of log files
-def getLogsList(logsDir=config.LOGS_DIR):
+def get_log_list(logs_dir=config.LOGS_DIR):
   try:
-    logs = os.listdir(logsDir)
+    logs = os.listdir(logs_dir)
     return logs
   except Exception as e:
     print('Failed to get logs list', str(e))
