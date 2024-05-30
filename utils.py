@@ -11,7 +11,7 @@ import ujson as json
 import config
 
 # Convert tuple to semver string
-def tupleToSemver(tuple):
+def tuple_to_semver(tuple):
   return '.'.join(map(str, tuple)).strip('.').strip(',')
 
 # Check if Micropython version is 1.22 or higher
@@ -29,7 +29,7 @@ def isMicropythonVersionSufficient(current, required='1.22.0'):
   if current >= required:
     return True
   else:
-    print('Micropython version', tupleToSemver(current), 'is not sufficient, required version is', tupleToSemver(required))
+    print('Micropython version', tuple_to_semver(current), 'is not sufficient, required version is', tuple_to_semver(required))
     return False
 
 # Convert Fahrenheit to Celsius
@@ -171,7 +171,7 @@ def ableToBoot(able=True):
       able = False
 
   # Check if Micropython version is sufficient
-  micropython_version = tupleToSemver(sys.implementation.version)
+  micropython_version = tuple_to_semver(sys.implementation.version)
   if not isMicropythonVersionSufficient(micropython_version):
     print('Micropython version', micropython_version, 'is not sufficient, required version is 1.22.0 or higher')
     able = False
