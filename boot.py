@@ -6,7 +6,7 @@ import time
 
 # Project files
 import config
-from utils import ableToBoot
+from utils import able_to_boot
 
 if not ableToBoot():
   raise Exception('\nUnable to boot device due to configuration errors\n'.upper())

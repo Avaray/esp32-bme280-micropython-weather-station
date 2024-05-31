@@ -30,8 +30,8 @@ try:
 
     print('Platform:', sys.platform.upper())
     print('Flash size:', esp.flash_size() // 1024 // 1024, 'MB')
-    print('Micropython Firmware Version', utils.tupleToSemver(sys.implementation.version))
-    print('Python version', utils.tupleToSemver(sys.version_info))
+    print('Micropython Firmware Version', utils.tuple_to_semver(sys.implementation.version))
+    print('Python version', utils.tuple_to_semver(sys.version_info))
     print('CPU frequency:', machine.freq(), 'Hz')
 
     # Check if any networks are defined in config file
@@ -61,7 +61,7 @@ try:
     print('Humidity:', data['humidity'], '%')
 
   if config.SENSOR_INCLUDE_ESP32_TEMPERATURE:
-    data['esp32'] = utils.normalize_number(utils.fahrenheitToCelsius(esp32.raw_temperature()))
+    data['esp32'] = utils.normalize_number(utils.fahrenheit_to_celsius(esp32.raw_temperature()))
 
   print('Device temperature:', data['esp32'], '°C')
 
@@ -69,7 +69,7 @@ try:
   for server in config.SERVERS:
     url = server['url']
     try:
-      utils.send(url, data)
+      utils.send_data(url, data)
       print('Data sent successfully')
       break
     except Exception as e:

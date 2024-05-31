@@ -2,26 +2,30 @@
 import os
 import sys
 import utime
+import machine
 import hashlib
-import binascii
+import ubinascii as binascii
 import urequests as req
 import ujson as json
 
-# Modules from the project
+# Project files
 import config
 
 # Convert tuple to semver string
 def tuple_to_semver(tuple):
   return '.'.join(map(str, tuple)).strip('.').strip(',')
 
-# Check if Micropython version is 1.22 or higher
-def isMicropythonVersionSufficient(current, required='1.22.0'):
+# Check if the provided string is a valid semver
+def is_valid_semver(semver):
+  import re
+  return bool(re.match(r'^\d+\.\d+(\.\d+)?$', semver))
 
+# Check if Micropython version is 1.22 or higher
+def is_micro_python_version_sufficient(current, required='1.22.0'):
   print('Checking Micropython version')
 
-  import re
-  if not re.match(r'^\d+\.\d+(\.\d+)?$', current):
-    print('Provided version is not in semver format, expected format is x.y.z')
+  if not is_valid_semver(current) or not is_valid_semver(required):
+    print('One of the provided versions is not a valid semver string')
     return False
 
   current = tuple(map(int, current.split('.')))
@@ -33,7 +37,7 @@ def isMicropythonVersionSufficient(current, required='1.22.0'):
     return False
 
 # Convert Fahrenheit to Celsius
-def fahrenheitToCelsius(fahrenheit):
+def fahrenheit_to_celsius(fahrenheit):
   return (fahrenheit - 32) * 5.0/9.0
 
 # Normalize number to two decimal places
@@ -50,8 +54,9 @@ def get_log_list(logs_dir=config.LOGS_DIR):
     print('Failed to get logs list', str(e))
     return None
 
-# Get list of all .py files in the project
-def getProjectFilesList():
+# Get list of all project files
+# TODO: Auto detect project structure
+def project_files_list():
   try:
     files = {
       'python': [],
@@ -69,51 +74,43 @@ def getProjectFilesList():
     print('Failed to get project files list', str(e))
     return None
 
-# Delete single log file
-def deleteLog(filename, logsDir=config.LOGS_DIR):
+# Read data from a file
+def read_file(filename, directory='/'):
   try:
-    os.remove(logsDir + filename)
-  except Exception as e:
-    print('Failed to delete log', str(e))
-
-# If the number of logs exceeds the limit, the oldest logs are deleted
-def deleteOldLogs(logsDir=config.LOGS_DIR, maxFiles=config.LOGS_MAX_FILES):
-  try:
-    logs = os.listdir(logsDir)
-    logs.sort(key=lambda x: os.stat(logsDir + x).st_mtime)
-    while len(logs) > maxFiles:
-      os.remove(logsDir + logs[0])
-      logs.pop(0)
-  except Exception as e:
-    print('Failed to delete old logs', str(e))
-
-# Save logs to a file (overwrites the file if it exists)
-def saveLog(filename, data, logsDir=config.LOGS_DIR):
-  try:
-    with open(logsDir + filename, 'w') as file:
-      file.write(data)
-  except Exception as e:
-    print('Failed to save log', str(e))
-
-# Read logs from a file
-def readLog(filename, logsDir=config.LOGS_DIR):
-  try:
-    with open(logsDir + filename, 'r') as file:
+    with open(directory + filename, 'r') as file:
       return file.read()
   except Exception as e:
     print('Failed to read log', str(e))
     return None
 
-# Get file content MD5 hash
-def md5FileContentHash(file_path):
-  hash_md5 = hashlib.md5()
-  with open(file_path, "rb") as f:
-      for line in f:
-          hash_md5.update(line)
-  return binascii.hexlify(hash_md5.digest()).decode()
+# Save data a file (overwrites the file if it exists)
+def save_file(filename, directory='/', data):
+  try:
+    with open(directory + filename, 'w') as file:
+      file.write(data)
+  except Exception as e:
+    print('Failed to save file', str(e))
+
+# Delete single file
+def delete_file(directory='/', filename):
+  try:
+    os.remove(directory + filename)
+  except Exception as e:
+    print('Failed to delete file', str(e))
+
+# If the number of logs exceeds the limit, the oldest logs are deleted
+def delete_old_logs(logs_dir=config.LOGS_DIR, maxFiles=config.LOGS_MAX_FILES):
+  try:
+    logs = os.listdir(logs_dir)
+    logs.sort(key=lambda x: os.stat(logs_dir + x).st_mtime)
+    while len(logs) > maxFiles:
+      os.remove(logs_dir + logs[0])
+      logs.pop(0)
+  except Exception as e:
+    print('Failed to delete old logs', str(e))
 
 # Download file from the server
-def downloadFile(url, file_path):
+def download_file(url, file_path):
   try:
     response = req.get(url)
     with open(file_path, 'wb') as file:
@@ -123,8 +120,17 @@ def downloadFile(url, file_path):
     print('Failed to download file', str(e))
     return False
 
+# Get file content MD5 hash
+# This function will be used for OTA updates
+def md5_file_content_hash(file_path):
+  hash_md5 = hashlib.md5()
+  with open(file_path, "rb") as f:
+      for line in f:
+          hash_md5.update(line)
+  return binascii.hexlify(hash_md5.digest()).decode()
+
 # Send data to the server
-def send(url, data):
+def send_data(url, data):
   print('\nSENDING READINGS TO SERVER\n')
 
   print('Sending data to', url)
@@ -150,7 +156,7 @@ def send(url, data):
     return False
 
 # Validate required things before booting
-def ableToBoot(able=True):
+def able_to_boot(able=True):
 
   if not config.NETWORKS:
     print('No networks defined in config file')
@@ -172,8 +178,14 @@ def ableToBoot(able=True):
 
   # Check if Micropython version is sufficient
   micropython_version = tuple_to_semver(sys.implementation.version)
-  if not isMicropythonVersionSufficient(micropython_version):
+  if not is_micro_python_version_sufficient(micropython_version):
     print('Micropython version', micropython_version, 'is not sufficient, required version is 1.22.0 or higher')
     able = False
 
   return able
+
+# Get unique machine ID
+def machine_unique_id():
+  binary = machine.unique_id()
+  decoded = binascii.hexlify(binary).decode('utf-8')
+  return decoded
