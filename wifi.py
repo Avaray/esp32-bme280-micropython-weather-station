@@ -61,7 +61,7 @@ def connect():
     print('MAC address:', MAC)
 
 # Start the Access Point
-def create():
+def create_access_point():
   ap = network.WLAN(network.AP_IF)
   ap.active(True)
 
