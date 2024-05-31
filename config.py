@@ -1,9 +1,17 @@
-# Name for your device (optional)
+# ID for your device 
 DEVICE_ID = ""
+
+# Use machine unique ID for the device ID
+# If set to True the DEVICE_ID will be ignored
+# https://docs.micropython.org/en/latest/library/machine.html#machine.unique_id
+DEVICE_USE_MACHINE_ID = False
 
 # SCL and SDA pins for the sensor
 SENSOR_SCL_PIN = 22
 SENSOR_SDA_PIN = 21
+
+# Use Fahrenheit instead of Celsius for temperature
+SENSOR_USE_FAHRENHEIT = False
 
 # Include ESP32 raw temperature in the data sent to the server
 # https://docs.micropython.org/en/latest/library/esp32.html#esp32.raw_temperature
@@ -26,7 +34,7 @@ SERVERS = [
 
 # Upload sensor readings to all servers from the list
 # If set to False, the device will upload readings only to the first available server from the list
-SERVERS_UPLOAD_TO_ALL = False
+SERVERS_SEND_TO_ALL = False
 
 # How often check readings and send them to server (in minutes)
 # In other words, for how long to put the device to deep sleep
@@ -42,6 +50,7 @@ LOGS_SAVE = True
 LOGS_DIR = "logs"
 
 # How many log files to keep on the device (optional; default: 20)
+# Remember that space on the device is limited and you should keep this number low
 LOGS_MAX_FILES = 20
 
 # Enable or disable Over-The-Air updates 
