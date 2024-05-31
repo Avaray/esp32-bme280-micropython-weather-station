@@ -53,9 +53,9 @@ LOGS_DIR = "logs"
 # Remember that space on the device is limited and you should keep this number low
 LOGS_MAX_FILES = 20
 
-# Enable or disable Over-The-Air updates 
+# Enable Over-The-Air updates 
 # If enabled, the device will check for updates on start and download them if available
-OTA_UPDATES = False
+OTA_UPDATES_ENABLED = False
 
 # By default the device will boot in Admin Mode when ADMIN_MODE_PIN_OUT and ADMIN_MODE_PIN_IN are connected (shorted)
 # If you want to reverse this behavior, set ADMIN_MODE_REVERSED to True
