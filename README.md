@@ -91,12 +91,12 @@ console.log(`Listening on ${server.url}`);
 
 **Currently working on**
 
-- In Admin Mode, force connected client to open a browser with the device's IP address (Captive Portal).
 - Admin Mode + Web UI
+- In Admin Mode, force connected client to open a browser with the device's IP address (Captive Portal).
+- Scan for available Wi-Fi networks and display them in Admin Mode.
 
 **In the first place**
 
-- Scan for available Wi-Fi networks and display them in Admin Mode.
 - Do better Wi-Fi connection handling
 
 **Later**
