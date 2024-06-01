@@ -96,6 +96,7 @@ console.log(`Listening on ${server.url}`);
 
 **In the first place**
 
+- Scan for available Wi-Fi networks and display them in Admin Mode.
 - Do better Wi-Fi connection handling
 
 **Later**
